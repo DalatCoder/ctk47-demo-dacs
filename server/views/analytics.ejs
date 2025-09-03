@@ -1,0 +1,200 @@
+<!-- Analytics Dashboard -->
+<div class="analytics-section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <i class="fas fa-chart-bar"></i>
+            Thống kê tổng quan
+        </h2>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="dashboard-stats">
+        <div class="stat-card total">
+            <div class="stat-header">
+                <div>
+                    <div class="stat-title">Tổng số sự kiện</div>
+                    <div class="stat-value">15</div>
+                </div>
+                <div class="stat-icon total">
+                    <i class="fas fa-calendar"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stat-card upcoming">
+            <div class="stat-header">
+                <div>
+                    <div class="stat-title">Tăng trưởng tháng này</div>
+                    <div class="stat-value">+25%</div>
+                </div>
+                <div class="stat-icon upcoming">
+                    <i class="fas fa-arrow-up"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stat-card past">
+            <div class="stat-header">
+                <div>
+                    <div class="stat-title">Người tham gia TB</div>
+                    <div class="stat-value">120</div>
+                </div>
+                <div class="stat-icon past">
+                    <i class="fas fa-users"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stat-card today">
+            <div class="stat-header">
+                <div>
+                    <div class="stat-title">Đánh giá TB</div>
+                    <div class="stat-value">4.8/5</div>
+                </div>
+                <div class="stat-icon today">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Section -->
+    <div class="charts-grid">
+        <div class="chart-card">
+            <h3><i class="fas fa-line-chart"></i> Xu hướng sự kiện theo tháng</h3>
+            <div class="chart-placeholder">
+                <p>Biểu đồ sẽ được hiển thị tại đây</p>
+                <small>Tích hợp với Chart.js hoặc D3.js</small>
+            </div>
+        </div>
+        
+        <div class="chart-card">
+            <h3><i class="fas fa-pie-chart"></i> Phân loại sự kiện</h3>
+            <div class="chart-placeholder">
+                <p>Biểu đồ tròn phân loại sự kiện</p>
+                <small>Hội thảo, Workshop, Seminar, etc.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="activity-section">
+        <h3><i class="fas fa-history"></i> Hoạt động gần đây</h3>
+        <div class="activity-list">
+            <div class="activity-item">
+                <div class="activity-icon success">
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="activity-content">
+                    <p><strong>Thêm sự kiện mới:</strong> "Workshop Lập trình React"</p>
+                    <small>2 giờ trước</small>
+                </div>
+            </div>
+            
+            <div class="activity-item">
+                <div class="activity-icon warning">
+                    <i class="fas fa-edit"></i>
+                </div>
+                <div class="activity-content">
+                    <p><strong>Cập nhật sự kiện:</strong> "Hội thảo AI 2025"</p>
+                    <small>5 giờ trước</small>
+                </div>
+            </div>
+            
+            <div class="activity-item">
+                <div class="activity-icon danger">
+                    <i class="fas fa-trash"></i>
+                </div>
+                <div class="activity-content">
+                    <p><strong>Xóa sự kiện:</strong> "Meetup tháng 8"</p>
+                    <small>1 ngày trước</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.analytics-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.chart-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.chart-card h3 {
+    margin-bottom: 1rem;
+    color: #2d3748;
+    font-size: 1.1rem;
+}
+
+.chart-placeholder {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 8px;
+    border: 2px dashed #cbd5e0;
+    color: #718096;
+}
+
+.activity-section {
+    margin-top: 2rem;
+}
+
+.activity-section h3 {
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.activity-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+}
+
+.activity-icon.success { background: #38a169; }
+.activity-icon.warning { background: #d69e2e; }
+.activity-icon.danger { background: #e53e3e; }
+
+.activity-content p {
+    margin: 0;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+
+.activity-content small {
+    color: #718096;
+    font-size: 0.85rem;
+}
+</style>

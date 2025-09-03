@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' - ' : '' %>Admin Panel - Quản lý Sự kiện</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-calendar-alt"></i> Event Manager</h2>
+                <p>Hệ thống quản lý sự kiện</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="/" class="menu-item <%= currentPage === 'dashboard' ? 'active' : '' %>">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                
+                <a href="/events" class="menu-item <%= currentPage === 'events' ? 'active' : '' %>">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Quản lý Sự kiện</span>
+                </a>
+                
+                <a href="/events/add" class="menu-item <%= currentPage === 'add-event' ? 'active' : '' %>">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Thêm Sự kiện</span>
+                </a>
+                
+                <a href="/analytics" class="menu-item <%= currentPage === 'analytics' ? 'active' : '' %>">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Thống kê</span>
+                </a>
+                
+                <a href="/settings" class="menu-item <%= currentPage === 'settings' ? 'active' : '' %>">
+                    <i class="fas fa-cog"></i>
+                    <span>Cài đặt</span>
+                </a>
+                
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); margin: 1rem 0;"></div>
+                
+                <a href="/profile" class="menu-item">
+                    <i class="fas fa-user"></i>
+                    <span>Hồ sơ</span>
+                </a>
+                
+                <a href="/logout" class="menu-item">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Đăng xuất</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="page-title">
+                        <%= typeof pageTitle !== 'undefined' ? pageTitle : 'Dashboard' %>
+                    </h1>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="user-info">
+                        <span>Xin chào, Admin</span>
+                        <div class="user-avatar">
+                            A
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Alert Messages -->
+                <% if (typeof error !== 'undefined') { %>
+                    <div class="alert alert-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <%= error %>
+                    </div>
+                <% } %>
+                
+                <% if (typeof success !== 'undefined') { %>
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        <%= success %>
+                    </div>
+                <% } %>
+
+                <!-- Main Content -->
+                <%- body %>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Toggle sidebar for mobile
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (window.innerWidth <= 1024) {
+                if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth > 1024) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Auto-hide alerts after 5 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                setTimeout(() => {
+                    alert.style.opacity = '0';
+                    alert.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 300);
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

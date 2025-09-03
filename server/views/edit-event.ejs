@@ -1,0 +1,124 @@
+<div class="form-container">
+    <form method="POST" action="/events/edit/<%= event.id %>">
+        <div class="form-group">
+            <label for="title">
+                <i class="fas fa-heading"></i>
+                Tiêu đề sự kiện *
+            </label>
+            <input 
+                type="text" 
+                id="title" 
+                name="title" 
+                class="form-control" 
+                placeholder="Nhập tiêu đề sự kiện..."
+                required
+                value="<%= event.title %>"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="time">
+                <i class="fas fa-clock"></i>
+                Thời gian *
+            </label>
+            <input 
+                type="datetime-local" 
+                id="time" 
+                name="time" 
+                class="form-control"
+                required
+                value="<%= event.time %>"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="description">
+                <i class="fas fa-align-left"></i>
+                Mô tả *
+            </label>
+            <textarea 
+                id="description" 
+                name="description" 
+                class="form-control" 
+                placeholder="Mô tả chi tiết về sự kiện..."
+                required
+            ><%= event.description %></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="address">
+                <i class="fas fa-map-marker-alt"></i>
+                Địa chỉ *
+            </label>
+            <input 
+                type="text" 
+                id="address" 
+                name="address" 
+                class="form-control" 
+                placeholder="Nhập địa chỉ tổ chức sự kiện..."
+                required
+                value="<%= event.address %>"
+            >
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-success">
+                <i class="fas fa-save"></i>
+                Cập nhật Sự kiện
+            </button>
+            <a href="/events" class="btn">
+                <i class="fas fa-times"></i>
+                Hủy
+            </a>
+            <form method="POST" action="/events/delete/<%= event.id %>" style="display: inline;" 
+                  onsubmit="return confirm('Bạn có chắc chắn muốn xóa sự kiện này?')">
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                    Xóa Sự kiện
+                </button>
+            </form>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Validation và UI enhancements
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form[action*="/edit/"]');
+        const inputs = form.querySelectorAll('.form-control');
+        
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#e53e3e';
+                } else {
+                    this.style.borderColor = '#38a169';
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.style.borderColor === 'rgb(229, 62, 62)' && this.value.trim()) {
+                    this.style.borderColor = '#e2e8f0';
+                }
+            });
+        });
+
+        // Form submission validation
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (input.hasAttribute('required') && !input.value.trim()) {
+                    input.style.borderColor = '#e53e3e';
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault();
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+            }
+        });
+    });
+</script>

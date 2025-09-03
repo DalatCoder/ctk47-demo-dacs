@@ -1,0 +1,378 @@
+<!-- Settings Section -->
+<div class="settings-section">
+    <div class="section-header">
+        <h2 class="section-title">
+            <i class="fas fa-cog"></i>
+            Cài đặt hệ thống
+        </h2>
+    </div>
+
+    <!-- Settings Form -->
+    <div class="settings-grid">
+        <!-- General Settings -->
+        <div class="settings-card">
+            <h3><i class="fas fa-sliders-h"></i> Cài đặt chung</h3>
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="siteName">Tên hệ thống</label>
+                    <input type="text" id="siteName" class="form-control" value="Event Manager">
+                </div>
+                
+                <div class="form-group">
+                    <label for="siteDescription">Mô tả</label>
+                    <textarea id="siteDescription" class="form-control">Hệ thống quản lý sự kiện câu lạc bộ</textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="timezone">Múi giờ</label>
+                    <select id="timezone" class="form-control">
+                        <option value="Asia/Ho_Chi_Minh" selected>Việt Nam (UTC+7)</option>
+                        <option value="UTC">UTC</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i>
+                    Lưu thay đổi
+                </button>
+            </form>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-card">
+            <h3><i class="fas fa-bell"></i> Thông báo</h3>
+            <form class="settings-form">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label>Email thông báo sự kiện mới</label>
+                        <small>Nhận email khi có sự kiện mới được tạo</small>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label>Nhắc nhở trước sự kiện</label>
+                        <small>Gửi thông báo nhắc nhở 1 ngày trước sự kiện</small>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <label>Báo cáo hàng tuần</label>
+                        <small>Nhận báo cáo thống kê hàng tuần</small>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i>
+                    Cập nhật thông báo
+                </button>
+            </form>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-card">
+            <h3><i class="fas fa-shield-alt"></i> Bảo mật</h3>
+            <form class="settings-form">
+                <div class="form-group">
+                    <label for="currentPassword">Mật khẩu hiện tại</label>
+                    <input type="password" id="currentPassword" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="newPassword">Mật khẩu mới</label>
+                    <input type="password" id="newPassword" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Xác nhận mật khẩu mới</label>
+                    <input type="password" id="confirmPassword" class="form-control">
+                </div>
+                
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-key"></i>
+                    Đổi mật khẩu
+                </button>
+            </form>
+        </div>
+
+        <!-- Backup Settings -->
+        <div class="settings-card">
+            <h3><i class="fas fa-database"></i> Sao lưu dữ liệu</h3>
+            <div class="backup-info">
+                <p>Sao lưu cuối cùng: <strong>03/09/2025 - 14:30</strong></p>
+                <p>Tự động sao lưu: <span class="status-badge success">Đã bật</span></p>
+                <p>Tần suất: <strong>Hàng ngày</strong></p>
+            </div>
+            
+            <div class="backup-actions">
+                <button class="btn btn-success">
+                    <i class="fas fa-download"></i>
+                    Sao lưu ngay
+                </button>
+                <button class="btn">
+                    <i class="fas fa-upload"></i>
+                    Khôi phục dữ liệu
+                </button>
+            </div>
+        </div>
+
+        <!-- System Info -->
+        <div class="settings-card">
+            <h3><i class="fas fa-info-circle"></i> Thông tin hệ thống</h3>
+            <div class="system-info">
+                <div class="info-item">
+                    <span class="label">Phiên bản:</span>
+                    <span class="value">v1.0.0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Node.js:</span>
+                    <span class="value">v20.10.0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Database:</span>
+                    <span class="value">Firebase Firestore</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Uptime:</span>
+                    <span class="value">2 ngày 5 giờ</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Storage:</span>
+                    <span class="value">45MB / 1GB</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-card danger-zone">
+            <h3><i class="fas fa-exclamation-triangle"></i> Khu vực nguy hiểm</h3>
+            <div class="danger-content">
+                <p>Các hành động dưới đây có thể ảnh hưởng nghiêm trọng đến hệ thống.</p>
+                
+                <button class="btn btn-danger" onclick="confirmAction('reset')">
+                    <i class="fas fa-redo"></i>
+                    Reset hệ thống
+                </button>
+                
+                <button class="btn btn-danger" onclick="confirmAction('delete')">
+                    <i class="fas fa-trash"></i>
+                    Xóa tất cả dữ liệu
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.settings-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.settings-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.settings-card h3 {
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.settings-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-info label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.setting-info small {
+    color: #718096;
+    font-size: 0.85rem;
+}
+
+/* Toggle Switch */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #667eea;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-badge.success {
+    background: #c6f6d5;
+    color: #2f855a;
+}
+
+/* Backup Info */
+.backup-info {
+    margin-bottom: 1.5rem;
+}
+
+.backup-info p {
+    margin-bottom: 0.5rem;
+    color: #4a5568;
+}
+
+.backup-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* System Info */
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item .label {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.info-item .value {
+    color: #4a5568;
+}
+
+/* Danger Zone */
+.danger-zone {
+    border-left: 4px solid #e53e3e;
+}
+
+.danger-zone h3 {
+    color: #e53e3e;
+}
+
+.danger-content p {
+    color: #718096;
+    margin-bottom: 1rem;
+}
+
+.danger-content .btn {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+</style>
+
+<script>
+function confirmAction(action) {
+    const messages = {
+        reset: 'Bạn có chắc chắn muốn reset hệ thống? Tất cả cài đặt sẽ về mặc định.',
+        delete: 'CẢNH BÁO: Hành động này sẽ xóa tất cả dữ liệu và không thể khôi phục. Bạn có chắc chắn?'
+    };
+    
+    if (confirm(messages[action])) {
+        alert('Tính năng này đang được phát triển.');
+    }
+}
+
+// Form submissions
+document.addEventListener('DOMContentLoaded', function() {
+    const forms = document.querySelectorAll('.settings-form');
+    forms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cài đặt đã được lưu thành công!');
+        });
+    });
+});
+</script>
