@@ -1,17 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Website CLB</title>
+    <title>CLB Tin Học - Trang Chủ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f4ff',
+                            100: '#e0eaff',
+                            200: '#c7d6ff',
+                            300: '#a5b8ff',
+                            400: '#818cff',
+                            500: '#667eea',
+                            600: '#5a67d8',
+                            700: '#4c51bf',
+                            800: '#434190',
+                            900: '#3c366b',
+                        },
+                        secondary: {
+                            500: '#764ba2',
+                            600: '#6a4190',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .banner-bg {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%23667eea" width="1200" height="500"/><text x="600" y="250" text-anchor="middle" fill="white" font-size="48" font-family="Arial">CLB TIN HỌC</text></svg>');
+        }
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .gradient-news {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .text-shadow-sm {
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>
-        Pariatur amet laboris consequat nulla ea culpa sunt consectetur nulla labore qui do esse. 
-        Pariatur non aliquip ad esse incididunt fugiat id consequat adipisicing id. 
-        Eiusmod et consectetur in aute incididunt cupidatat aliqua cupidatat laboris qui. 
-        Deserunt incididunt cupidatat mollit eu nulla nisi nisi proident.
-    </p>
+    <!-- Header -->
+    <header class="gradient-primary text-white py-4 sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center px-8">
+            <div class="text-2xl font-bold">CLB Tin Học</div>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="text-white no-underline hover:opacity-80 transition-opacity">Trang Chủ</a></li>
+                <li><a href="#about" class="text-white no-underline hover:opacity-80 transition-opacity">Giới Thiệu</a></li>
+                <li><a href="#news" class="text-white no-underline hover:opacity-80 transition-opacity">Tin Tức</a></li>
+                <li><a href="#events" class="text-white no-underline hover:opacity-80 transition-opacity">Sự Kiện</a></li>
+                <li><a href="#contact" class="text-white no-underline hover:opacity-80 transition-opacity">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner/Slider -->
+    <section id="home" class="banner-bg bg-cover bg-center h-[500px] flex items-center justify-center text-center text-white">
+        <div class="banner-content">
+            <h1 class="text-5xl md:text-6xl mb-4 text-shadow font-bold">Chào Mừng Đến Với CLB Tin Học</h1>
+            <p class="text-xl md:text-2xl mb-8 text-shadow-sm">Nơi kết nối đam mê công nghệ và phát triển kỹ năng lập trình</p>
+            <a href="#about" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full no-underline inline-block transition-colors">Tìm Hiểu Thêm</a>
+        </div>
+    </section>
+
+    <!-- Giới thiệu ngắn -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="text-center text-4xl mb-12 text-gray-800 font-bold">Về Chúng Tôi</h2>
+            <div class="text-center max-w-4xl mx-auto">
+                <p class="text-lg mb-6 text-gray-600">
+                    CLB Tin Học là nơi hội tụ những người yêu thích công nghệ, đam mê lập trình và mong muốn khám phá thế giới số. 
+                    Chúng tôi cam kết tạo ra một môi trường học tập năng động, sáng tạo và hỗ trợ lẫn nhau trong hành trình phát triển kỹ năng.
+                </p>
+                <p class="text-lg mb-6 text-gray-600">
+                    Sứ mệnh của chúng tôi là đào tạo thế hệ lập trình viên tài năng, có tư duy logic và khả năng giải quyết vấn đề xuất sắc. 
+                    Mục tiêu của CLB là xây dựng cộng đồng học tập mạnh mẽ, nơi mọi thành viên đều có thể phát huy tối đa tiềm năng của mình.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tin tức mới nhất -->
+    <section id="news" class="py-16">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="text-center text-4xl mb-12 text-gray-800 font-bold">Tin Tức Mới Nhất</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-8">
+                <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <div class="gradient-news h-48 flex items-center justify-center text-white font-bold">
+                        <span>Hình ảnh tin tức 1</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="mb-4 text-gray-800 font-semibold text-lg">Khai mạc cuộc thi lập trình mùa thu 2025</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Cuộc thi lập trình thường niên của CLB đã chính thức khai mạc với sự tham gia của hơn 200 thí sinh từ các trường đại học trong khu vực...</p>
+                        <div class="text-gray-400 text-sm">01/09/2025</div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <div class="gradient-news h-48 flex items-center justify-center text-white font-bold">
+                        <span>Hình ảnh tin tức 2</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="mb-4 text-gray-800 font-semibold text-lg">Workshop AI và Machine Learning cơ bản</h3>
+                        <p class="text-gray-600 mb-4 text-sm">CLB tổ chức workshop giới thiệu về trí tuệ nhân tạo và machine learning dành cho các thành viên mới, giúp mọi người hiểu rõ hơn về xu hướng công nghệ hiện đại...</p>
+                        <div class="text-gray-400 text-sm">28/08/2025</div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <div class="gradient-news h-48 flex items-center justify-center text-white font-bold">
+                        <span>Hình ảnh tin tức 3</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="mb-4 text-gray-800 font-semibold text-lg">Thành viên CLB đạt giải cao tại Olympic Tin học</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Chúc mừng các thành viên CLB đã xuất sắc đạt được nhiều giải thưởng cao tại kỳ thi Olympic Tin học sinh viên toàn quốc lần thứ 30...</p>
+                        <div class="text-gray-400 text-sm">25/08/2025</div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg overflow-hidden shadow-lg hover:-translate-y-2 transition-transform duration-300">
+                    <div class="gradient-news h-48 flex items-center justify-center text-white font-bold">
+                        <span>Hình ảnh tin tức 4</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="mb-4 text-gray-800 font-semibold text-lg">Khai giảng khóa học Web Development 2025</h3>
+                        <p class="text-gray-600 mb-4 text-sm">CLB chính thức khai giảng khóa học phát triển web dành cho người mới bắt đầu, bao gồm HTML, CSS, JavaScript và các framework hiện đại...</p>
+                        <div class="text-gray-400 text-sm">20/08/2025</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sự kiện sắp diễn ra -->
+    <section id="events" class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="text-center text-4xl mb-12 text-gray-800 font-bold">Sự Kiện Sắp Diễn Ra</h2>
+            <div class="space-y-6 mt-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8">
+                    <div class="bg-primary-500 text-white p-4 rounded-lg text-center min-w-[100px]">
+                        <div class="text-3xl font-bold">15</div>
+                        <div class="text-sm">Tháng 9</div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="mb-2 text-gray-800 font-semibold text-xl">Hackathon 2025 - Sáng tạo vì cộng đồng</h3>
+                        <p class="text-gray-600 mb-1"><strong>Thời gian:</strong> 15-16/09/2025 (2 ngày)</p>
+                        <p class="text-gray-600 mb-1"><strong>Địa điểm:</strong> Hội trường A1, Trường Đại học Công nghệ</p>
+                        <p class="text-gray-600">Cuộc thi phát triển phần mềm 48 giờ với chủ đề "Công nghệ vì cộng đồng"</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8">
+                    <div class="bg-primary-500 text-white p-4 rounded-lg text-center min-w-[100px]">
+                        <div class="text-3xl font-bold">22</div>
+                        <div class="text-sm">Tháng 9</div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="mb-2 text-gray-800 font-semibold text-xl">Seminar: Xu hướng công nghệ 2025</h3>
+                        <p class="text-gray-600 mb-1"><strong>Thời gian:</strong> 22/09/2025, 14:00 - 17:00</p>
+                        <p class="text-gray-600 mb-1"><strong>Địa điểm:</strong> Phòng hội nghị B2, Trung tâm CNTT</p>
+                        <p class="text-gray-600">Thảo luận về các xu hướng công nghệ mới nhất với các chuyên gia hàng đầu</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-8">
+                    <div class="bg-primary-500 text-white p-4 rounded-lg text-center min-w-[100px]">
+                        <div class="text-3xl font-bold">05</div>
+                        <div class="text-sm">Tháng 10</div>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="mb-2 text-gray-800 font-semibold text-xl">Team Building - Gắn kết đồng đội</h3>
+                        <p class="text-gray-600 mb-1"><strong>Thời gian:</strong> 05/10/2025, 08:00 - 18:00</p>
+                        <p class="text-gray-600 mb-1"><strong>Địa điểm:</strong> Khu du lịch Đại Lải, Vĩnh Phúc</p>
+                        <p class="text-gray-600">Hoạt động gắn kết team building dành cho toàn bộ thành viên CLB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Thông Tin Liên Hệ</h3>
+                    <p class="mb-2 text-gray-300">📧 Email: clbtinhoc@university.edu.vn</p>
+                    <p class="mb-2 text-gray-300">📞 Điện thoại: (024) 1234 5678</p>
+                    <p class="mb-4 text-gray-300">📍 Địa chỉ: Trường Đại học Công nghệ, Hà Nội</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" title="Facebook" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">📘</a>
+                        <a href="#" title="YouTube" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">📺</a>
+                        <a href="#" title="GitHub" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">💻</a>
+                        <a href="#" title="LinkedIn" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">💼</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Liên Kết Nhanh</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Giới thiệu</a></li>
+                        <li><a href="#news" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Tin tức</a></li>
+                        <li><a href="#events" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Sự kiện</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Liên hệ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Đăng ký thành viên</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Hoạt Động CLB</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Khóa học lập trình</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Cuộc thi Hackathon</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Workshop công nghệ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Dự án thực tế</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Trao đổi kinh nghiệm</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Bản Đồ</h3>
+                    <div class="bg-gray-600 h-36 rounded-lg flex items-center justify-center text-gray-300">
+                        <div class="text-center">
+                            <div>🗺️ Bản đồ vị trí CLB</div>
+                            <div class="text-sm">(Tích hợp Google Maps)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 border-t border-gray-600 text-gray-400">
+                <p>&copy; 2025 CLB Tin Học. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling cho navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Banner slider effect (có thể mở rộng thêm)
+        let currentSlide = 0;
+        const bannerTexts = [
+            {
+                title: "Chào Mừng Đến Với CLB Tin Học",
+                subtitle: "Nơi kết nối đam mê công nghệ và phát triển kỹ năng lập trình"
+            },
+            {
+                title: "Học Tập - Sáng Tạo - Phát Triển",
+                subtitle: "Cùng nhau xây dựng tương lai công nghệ"
+            },
+            {
+                title: "Tham Gia Cộng Đồng Lập Trình",
+                subtitle: "Kết nối với những người có cùng đam mê"
+            }
+        ];
+
+        function changeBannerText() {
+            const bannerContent = document.querySelector('.banner-content');
+            const h1 = bannerContent.querySelector('h1');
+            const p = bannerContent.querySelector('p');
+            
+            currentSlide = (currentSlide + 1) % bannerTexts.length;
+            
+            h1.style.opacity = '0';
+            p.style.opacity = '0';
+            
+            setTimeout(() => {
+                h1.textContent = bannerTexts[currentSlide].title;
+                p.textContent = bannerTexts[currentSlide].subtitle;
+                h1.style.opacity = '1';
+                p.style.opacity = '1';
+            }, 500);
+        }
+
+        // Thay đổi text banner mỗi 5 giây
+        setInterval(changeBannerText, 5000);
+
+        // Thêm hiệu ứng fade-in khi scroll sử dụng Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-5');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, observerOptions);
+
+        // Quan sát các phần tử cần hiệu ứng khi trang được load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Thêm class cho các card để tạo hiệu ứng fade-in
+            const cards = document.querySelectorAll('article, .bg-white');
+            cards.forEach(card => {
+                card.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-600', 'ease-out');
+                observer.observe(card);
+            });
+
+            // Mobile menu toggle (có thể mở rộng sau)
+            const nav = document.querySelector('nav ul');
+            
+            // Responsive navigation cho mobile
+            function checkScreenSize() {
+                if (window.innerWidth < 768) {
+                    nav.classList.add('hidden');
+                } else {
+                    nav.classList.remove('hidden');
+                    nav.classList.add('md:flex');
+                }
+            }
+            
+            window.addEventListener('resize', checkScreenSize);
+            checkScreenSize();
+        });
+
+        // Thêm hiệu ứng parallax nhẹ cho banner
+        window.addEventListener('scroll', () => {
+            const banner = document.querySelector('#home');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            if (banner) {
+                banner.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Loading animation cho các liên kết
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function() {
+                // Thêm hiệu ứng loading nhẹ
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
 </body>
 </html>
