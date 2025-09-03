@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sự Kiện - CLB Tin Học</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f4ff',
+                            100: '#e0eaff',
+                            200: '#c7d6ff',
+                            300: '#a5b8ff',
+                            400: '#818cff',
+                            500: '#667eea',
+                            600: '#5a67d8',
+                            700: '#4c51bf',
+                            800: '#434190',
+                            900: '#3c366b',
+                        },
+                        secondary: {
+                            500: '#764ba2',
+                            600: '#6a4190',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .tab-inactive {
+            background: #f8f9fa;
+            color: #666;
+            border: 1px solid #e0e0e0;
+        }
+        .tab-inactive:hover {
+            background: #e9ecef;
+        }
+        .event-card-upcoming {
+            border-left: 4px solid #10b981;
+        }
+        .event-card-ongoing {
+            border-left: 4px solid #f59e0b;
+        }
+        .event-card-ended {
+            border-left: 4px solid #6b7280;
+        }
+        .status-upcoming {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .status-ongoing {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        .status-ended {
+            background: #f3f4f6;
+            color: #374151;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-primary text-white py-4 sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto flex justify-between items-center px-8">
+            <div class="text-2xl font-bold">
+                <a href="index.html" class="text-white no-underline">CLB Tin Học</a>
+            </div>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="index.html" class="text-white no-underline hover:opacity-80 transition-opacity">Trang Chủ</a></li>
+                <li><a href="index.html#about" class="text-white no-underline hover:opacity-80 transition-opacity">Giới Thiệu</a></li>
+                <li><a href="index.html#news" class="text-white no-underline hover:opacity-80 transition-opacity">Tin Tức</a></li>
+                <li><a href="events.html" class="text-white no-underline font-semibold border-b-2 border-white pb-1">Sự Kiện</a></li>
+                <li><a href="#contact" class="text-white no-underline hover:opacity-80 transition-opacity">Liên Hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="gradient-primary text-white py-16">
+        <div class="max-w-6xl mx-auto px-8 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">Sự Kiện CLB Tin Học</h1>
+            <p class="text-xl md:text-2xl opacity-90">Tham gia các hoạt động hấp dẫn và bổ ích của chúng tôi</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-8">
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="showTab('all')" id="tab-all" class="tab-active px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Tất Cả Sự Kiện
+                </button>
+                <button onclick="showTab('upcoming')" id="tab-upcoming" class="tab-inactive px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Sắp Diễn Ra
+                </button>
+                <button onclick="showTab('ongoing')" id="tab-ongoing" class="tab-inactive px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Đang Diễn Ra
+                </button>
+                <button onclick="showTab('ended')" id="tab-ended" class="tab-inactive px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    Đã Kết Thúc
+                </button>
+            </div>
+
+            <!-- Events Grid -->
+            <div id="events-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Sự kiện sắp diễn ra -->
+                <div class="event-card event-upcoming bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-upcoming">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-upcoming px-3 py-1 rounded-full text-sm font-semibold">Sắp diễn ra</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-primary-600">15</div>
+                                <div class="text-sm text-gray-500">Tháng 9</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Hackathon 2025 - Sáng tạo vì cộng đồng</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>15-16/09/2025 (2 ngày)</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Hội trường A1, Trường Đại học Công nghệ</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Cuộc thi phát triển phần mềm 48 giờ với chủ đề "Công nghệ vì cộng đồng". Tham gia cùng các đội thi để tạo ra những sản phẩm có ý nghĩa cho xã hội.</p>
+                        <button onclick="viewEventDetail('hackathon-2025')" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <div class="event-card event-upcoming bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-upcoming">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-upcoming px-3 py-1 rounded-full text-sm font-semibold">Sắp diễn ra</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-primary-600">22</div>
+                                <div class="text-sm text-gray-500">Tháng 9</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Seminar: Xu hướng công nghệ 2025</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>22/09/2025, 14:00 - 17:00</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Phòng hội nghị B2, Trung tâm CNTT</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Thảo luận về các xu hướng công nghệ mới nhất với các chuyên gia hàng đầu trong ngành. Cơ hội tuyệt vời để cập nhật kiến thức và networking.</p>
+                        <button onclick="viewEventDetail('seminar-2025')" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <div class="event-card event-upcoming bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-upcoming">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-upcoming px-3 py-1 rounded-full text-sm font-semibold">Sắp diễn ra</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-primary-600">05</div>
+                                <div class="text-sm text-gray-500">Tháng 10</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Team Building - Gắn kết đồng đội</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>05/10/2025, 08:00 - 18:00</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Khu du lịch Đại Lải, Vĩnh Phúc</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Hoạt động gắn kết team building dành cho toàn bộ thành viên CLB. Một ngày đầy thú vị với các trò chơi và hoạt động nhóm.</p>
+                        <button onclick="viewEventDetail('team-building-2025')" class="w-full bg-primary-500 hover:bg-primary-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sự kiện đang diễn ra -->
+                <div class="event-card event-ongoing bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-ongoing">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-ongoing px-3 py-1 rounded-full text-sm font-semibold">Đang diễn ra</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-amber-600">03</div>
+                                <div class="text-sm text-gray-500">Tháng 9</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cuộc thi Lập trình mùa Thu 2025</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>01-15/09/2025</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Online & Phòng Lab A3</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Cuộc thi lập trình thường niên với sự tham gia của hơn 200 thí sinh. Hiện đang trong giai đoạn vòng bán kết.</p>
+                        <button onclick="viewEventDetail('programming-contest-2025')" class="w-full bg-amber-500 hover:bg-amber-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sự kiện đã kết thúc -->
+                <div class="event-card event-ended bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-ended">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-ended px-3 py-1 rounded-full text-sm font-semibold">Đã kết thúc</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-gray-600">28</div>
+                                <div class="text-sm text-gray-500">Tháng 8</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Workshop AI và Machine Learning cơ bản</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>28/08/2025, 09:00 - 16:00</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Phòng C1, Tòa nhà CNTT</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Workshop giới thiệu về AI và ML dành cho người mới bắt đầu. Đã có 150 thành viên tham gia và nhận được phản hồi tích cực.</p>
+                        <button onclick="viewEventDetail('ai-workshop-2025')" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <div class="event-card event-ended bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-ended">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-ended px-3 py-1 rounded-full text-sm font-semibold">Đã kết thúc</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-gray-600">20</div>
+                                <div class="text-sm text-gray-500">Tháng 8</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Khai giảng khóa học Web Development 2025</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>20/08/2025, 19:00 - 21:00</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Phòng D2, Tòa nhà chính</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Buổi khai giảng khóa học phát triển web với sự tham gia của 80 học viên. Khóa học đang tiếp tục với nhiều hoạt động thực hành.</p>
+                        <button onclick="viewEventDetail('web-dev-course-2025')" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+
+                <div class="event-card event-ended bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 event-card-ended">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="status-ended px-3 py-1 rounded-full text-sm font-semibold">Đã kết thúc</span>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-gray-600">15</div>
+                                <div class="text-sm text-gray-500">Tháng 8</div>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Talkshow: Nghề nghiệp trong ngành IT</h3>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">🕒</span>
+                                <span>15/08/2025, 18:30 - 20:30</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <span class="mr-2">📍</span>
+                                <span>Hội trường lớn, Tòa A</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Talkshow với sự tham gia của các chuyên gia từ các công ty công nghệ hàng đầu. Chia sẻ về con đường nghề nghiệp và xu hướng tuyển dụng.</p>
+                        <button onclick="viewEventDetail('it-career-talk-2025')" class="w-full bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg font-semibold transition-colors">
+                            Xem Chi Tiết
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No events message (hidden by default) -->
+            <div id="no-events" class="text-center py-16 hidden">
+                <div class="text-6xl mb-4">📅</div>
+                <h3 class="text-2xl font-bold text-gray-600 mb-2">Không có sự kiện nào</h3>
+                <p class="text-gray-500">Hiện tại không có sự kiện nào trong danh mục này.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-primary text-white py-16">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Không muốn bỏ lỡ sự kiện nào?</h2>
+            <p class="text-xl mb-8 opacity-90">Đăng ký nhận thông báo về các sự kiện mới nhất của CLB</p>
+            <div class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Nhập email của bạn" class="flex-1 px-4 py-3 rounded-lg text-gray-800 border-none outline-none">
+                <button class="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                    Đăng Ký
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Thông Tin Liên Hệ</h3>
+                    <p class="mb-2 text-gray-300">📧 Email: clbtinhoc@university.edu.vn</p>
+                    <p class="mb-2 text-gray-300">📞 Điện thoại: (024) 1234 5678</p>
+                    <p class="mb-4 text-gray-300">📍 Địa chỉ: Trường Đại học Công nghệ, Hà Nội</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" title="Facebook" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">📘</a>
+                        <a href="#" title="YouTube" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">📺</a>
+                        <a href="#" title="GitHub" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">💻</a>
+                        <a href="#" title="LinkedIn" class="bg-primary-500 hover:bg-primary-600 text-white w-10 h-10 rounded-full flex items-center justify-center no-underline transition-colors">💼</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Liên Kết Nhanh</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Trang chủ</a></li>
+                        <li><a href="index.html#about" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Giới thiệu</a></li>
+                        <li><a href="index.html#news" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Tin tức</a></li>
+                        <li><a href="events.html" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Sự kiện</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Liên hệ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Loại Sự Kiện</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Workshop công nghệ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Cuộc thi lập trình</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Seminar & Talkshow</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Team Building</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary-500 no-underline transition-colors">Khóa học</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="mb-4 text-primary-500 font-semibold text-lg">Theo Dõi Chúng Tôi</h3>
+                    <p class="text-gray-300 mb-4">Cập nhật thông tin sự kiện mới nhất</p>
+                    <div class="space-y-2">
+                        <p class="text-sm text-gray-400">📱 Facebook: CLB Tin Học</p>
+                        <p class="text-sm text-gray-400">📺 YouTube: CLB Tin Học TV</p>
+                        <p class="text-sm text-gray-400">💻 GitHub: clb-tinhoc</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 border-t border-gray-600 text-gray-400">
+                <p>&copy; 2025 CLB Tin Học. Tất cả quyền được bảo lưu.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        function showTab(tabType) {
+            // Remove active class from all tabs
+            const tabs = ['all', 'upcoming', 'ongoing', 'ended'];
+            tabs.forEach(tab => {
+                const tabElement = document.getElementById(`tab-${tab}`);
+                tabElement.classList.remove('tab-active');
+                tabElement.classList.add('tab-inactive');
+            });
+
+            // Add active class to clicked tab
+            const activeTab = document.getElementById(`tab-${tabType}`);
+            activeTab.classList.remove('tab-inactive');
+            activeTab.classList.add('tab-active');
+
+            // Show/hide events based on tab
+            const allEvents = document.querySelectorAll('.event-card');
+            const noEventsMessage = document.getElementById('no-events');
+            let visibleCount = 0;
+
+            allEvents.forEach(event => {
+                if (tabType === 'all') {
+                    event.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    if (event.classList.contains(`event-${tabType}`)) {
+                        event.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        event.style.display = 'none';
+                    }
+                }
+            });
+
+            // Show "no events" message if no events visible
+            if (visibleCount === 0) {
+                noEventsMessage.classList.remove('hidden');
+            } else {
+                noEventsMessage.classList.add('hidden');
+            }
+        }
+
+        // View event detail function
+        function viewEventDetail(eventId) {
+            // Placeholder for event detail functionality
+            alert(`Xem chi tiết sự kiện: ${eventId}\n\nTính năng này sẽ được phát triển để hiển thị thông tin chi tiết về sự kiện, bao gồm:\n- Mô tả đầy đủ\n- Lịch trình\n- Điều kiện tham gia\n- Form đăng ký\n- Thông tin liên hệ`);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove('opacity-0', 'translate-y-5');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                }
+            });
+        }, observerOptions);
+
+        // Add animation classes to event cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const eventCards = document.querySelectorAll('.event-card');
+            eventCards.forEach((card, index) => {
+                card.classList.add('opacity-0', 'translate-y-5', 'transition-all', 'duration-600', 'ease-out');
+                card.style.transitionDelay = `${index * 100}ms`;
+                observer.observe(card);
+            });
+        });
+
+        // Email subscription functionality
+        document.querySelector('button').addEventListener('click', function() {
+            const email = document.querySelector('input[type="email"]').value;
+            if (email) {
+                alert(`Cảm ơn bạn đã đăng ký nhận thông báo!\nEmail: ${email}\n\nChúng tôi sẽ gửi thông tin về các sự kiện mới nhất đến email của bạn.`);
+                document.querySelector('input[type="email"]').value = '';
+            } else {
+                alert('Vui lòng nhập địa chỉ email hợp lệ.');
+            }
+        });
+    </script>
+</body>
+</html>
